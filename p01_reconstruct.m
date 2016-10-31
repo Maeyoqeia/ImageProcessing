@@ -1,8 +1,8 @@
 pkg load image;
 
 close all; clear; clc;
-img1 = imread('/home/viola/DATA/uni/semester7/BV/Übung1/p01_Bild1.png'); 
-img2 = imread('/home/viola/DATA/uni/semester7/BV/Übung1/p01_Bild2.png'); 
+img1 = imread('p01_Bild1.png'); 
+img2 = imread('p01_Bild2.png'); 
 figure(1); imshow(img1);
 figure(2); imshow(img2);
 #A = img2;

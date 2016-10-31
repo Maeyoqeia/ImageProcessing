@@ -1,12 +1,13 @@
 pkg load image;
 
-close all; clear; clc;
-img1 = imread('/home/viola/DATA/uni/semester7/BV/Übung1/p01_Bild1.png'); 
-y= 112
-x = 447
-A = img1;
-imshow(img1);
-hold on
-plot (x,y, "rs");
-;
+img1 = imread('p01_Bild1.png');
+img2 = imread('p01_Bild2.png');
 
+figure(1)
+imshow(img1);
+title('Mit Rechteck', 'FontSize', 12);
+
+rectangle('Position',[441,106,11,11],...
+	'EdgeColor', 'r',...
+	'LineWidth', 3,...
+	'LineStyle','-');
