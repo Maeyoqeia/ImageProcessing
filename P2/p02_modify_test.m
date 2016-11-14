@@ -29,9 +29,10 @@ end
 end
 figure(2); imshow(res);
 
-%das fouriertransformierte, schon zentrierte Bild wird in die Funktion gegeben. 
-%Die wichtigsten Frequenzanteile sind die um den (zentrierten) Ursprung, weil sie den größten Anteil an 
-% der Funktion ausmachen.
-%Wenn man nun diese Funktionen (als Rückgabewert von modify) wieder aufsummiert, enthält man 
-%fast das Originalsignal, weil die wichtigen (ersten) Koeffizienten und FUnktionswerte gespeichert wurden.
-%SO kann man ein Bild komprimieren.
+%Interpretation des Ergebnisses:
+%Bei der Eingabe des fouriertransformierten, zentrierten Bildes liegen die niedrigen Frequenzen in der Bildmitte,
+%die hohen Frequenzen am Bildrand. Werden nun die Frequenzen um den Bildmittelpunkt zur Darstellung des Bildes
+%im Ortsraum genutzt, gehen Bildinformationen verloren, die nur durch hohe Frequenzen dargestellt werden können. 
+%Dabei handelt es sich im die Kanteninformationen, die nur mittels hoher Frequenzen abgetastet werden können.
+%Die Funktion selbst stellt daher eine Art Filter dar, welcher das Bild 'weichzeichnet'. Außerdem kann die Funktion
+%zur Kompression des Bildes verwendet werden, da ein Teil der Daten abgeschnitten wird.
