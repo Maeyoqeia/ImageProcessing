@@ -1,4 +1,4 @@
-pkg load image;
+%pkg load image;
 
 close all; clear; clc;
 %read picture and convert to double
@@ -16,12 +16,12 @@ amp_img_fft = log(abs(img_fft))/8;
 figure(1); imshow(amp_img_myfft);
 figure(2); imshow(amp_img_fft);
 
-%inverse ft
-img_myifft = ifft2(img_myfft);
-img_ifft = ifft2(img_fft);
+%inverse ft and shifting
+img_myifft = ifft2(ifftshift(img_myfft));
+img_ifft = ifft2(ifftshift(img_fft));
 
 %test if imaginary part is zero
 if(max(abs(imag(img_myifft(:))))/max(abs(img_myifft(:))) < sqrt(eps))
-figure(3); imshow(real(img_myifft));
+  figure(3); imshow(real(img_myifft));
 end
 
