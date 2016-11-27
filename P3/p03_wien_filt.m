@@ -6,14 +6,14 @@ H = fft2(fftshift(psf));
 fft_img = fft2(img_blur);
 
 [M,N]=size(img_blur);
-A=zeros(M,N);
+W=zeros(M,N);
 
-for u=1:M
-  for v=1:N
-    A(u,v) = A(u,v) + ((1/H(u,v)) * ((abs(H(u,v)))^2/((abs(H(u,v))^2)+k)));
-  end
+one = ones(M,N);
+first = one./H;
+abs = abs(H).^2
+abs2 = abs .+ k;
+W = first .* (abs./abs2);
+
+img_rest = ifft2(fft_img.*W);
+
 end
-
-img_rest = ifft2(fft_img.*A);
-
-endfunction

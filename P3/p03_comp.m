@@ -12,15 +12,16 @@ title('Eingabe');
 %Punktantwort liegt in der Mitte des Bildes, von der Mitte aus nach:
 %links oben (in M- und N-Richtung minus-Koordinate)
 %rechts unten (in M- und N-Richtung plus-Koordinate)
+
 px=17; % Bewegungseinfluss
 [M,N] = size(img);
 psf = zeros(M,N);
-for i = -floor(px/2):floor(px/2)
+for i = -floor(px/2):floor(px/2);
   psf(floor(M/2)+i,floor(N/2)+i) = 255;
 end
-%figure(2);
-%imshow(psf,[]);
-%title('psf || Punktantwort');
+
+figure(2); imshow(psf);
+
 
 %gestoertes Bild und Punktantwort in den Frequenzraum transformieren
 fft_psf = fft2(fftshift(psf));
@@ -43,6 +44,7 @@ title('nach inverser Filterung');
 % vervielfacht wird.
 
 %Test von p03_wien-filt
+
 wienerFilteredImg1 = p03_wien_filt(img, psf, 0);
 wienerFilteredImg2 = p03_wien_filt(img, psf, 0.5);
 wienerFilteredImg3 = p03_wien_filt(img, psf, 100);
