@@ -7,7 +7,8 @@ function img_myfft = p02_myfft2(img)
     D = ones(m) * -1;
     vec3 = [0:m-1];
     vec4 = vec3';
-    E = D .^ (vec4 .+ vec3); % E is a 1, -1 alternating matrix (-1)^(2m)
+    E = D .^ (vec4 + vec3); 
+	% E is a 1, -1 alternating matrix (-1)^(2m)
     img1 = img .* E;
     
     %use dft matrix to implement ft
