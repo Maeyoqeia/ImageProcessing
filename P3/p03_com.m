@@ -3,9 +3,10 @@ pkg load image;
 close all; clear; clc;
 
 img = imread('p03_Bild1.png'); 
+img_blur = im2double(img);
 
 figure(1);
-imshow(img);
+imshow(img_blur);
 title('Eingabe');
 
 %Punktantwort mit Ausdehnung von 17 Pixeln, Winkel: 135 Grad
@@ -14,7 +15,7 @@ title('Eingabe');
 %rechts unten (in M- und N-Richtung plus-Koordinate)
 
 px=17; % Bewegungseinfluss
-[M,N] = size(img);
+[M,N] = size(img_blur);
 psf = zeros(M,N);
 for i = -floor(px/2):floor(px/2);
   psf(floor(M/2)+i,floor(N/2)+i) = 255;
@@ -25,7 +26,7 @@ figure(2); imshow(psf);
 
 %gestoertes Bild und Punktantwort in den Frequenzraum transformieren
 fft_psf = fft2(fftshift(psf));
-fft_img = fft2(img);
+fft_img = fft2(img_blur);
 
 %inverse Filterung mit 1/psf (=Störung)
 inverseFiltered = ifft2(fft_img./fft_psf);
@@ -45,12 +46,12 @@ title('nach inverser Filterung');
 
 %Test von p03_wien-filt
 
-wienerFilteredImg1 = p03_wien_filt(img, psf, 0);
-wienerFilteredImg2 = p03_wien_filt(img, psf, 0.5);
-wienerFilteredImg3 = p03_wien_filt(img, psf, 100);
-wienerFilteredImg4 = p03_wien_filt(img, psf, 1000);
-wienerFilteredImg5 = p03_wien_filt(img, psf, 10000);
-wienerFilteredImg6 = p03_wien_filt(img, psf, 100000);
+wienerFilteredImg1 = p03_wien_filt(img_blur, psf, 0);
+wienerFilteredImg2 = p03_wien_filt(img_blur, psf, 0.5);
+wienerFilteredImg3 = p03_wien_filt(img_blur, psf, 100);
+wienerFilteredImg4 = p03_wien_filt(img_blur, psf, 1000);
+wienerFilteredImg5 = p03_wien_filt(img_blur, psf, 10000);
+wienerFilteredImg6 = p03_wien_filt(img_blur, psf, 100000);
 
 %figure(4);
 %    subplot(2,3,1); imshow(wienerFilteredImg1, []);
