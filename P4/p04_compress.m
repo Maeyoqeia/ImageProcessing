@@ -28,15 +28,14 @@ function img_compressed = p04_compress(image, block_size, quant)
   end
  
   
-  %d) Umsortierung entlang der Nebendiagonale und Abschneiden nach dem letzten Wert>0
-  %jeden Block umsortieren
+  %d) Umsortierung entlang der Nebendiagonale
   zig_zerlegung = qnt_zerlegung; %Initialisierung für die richtige Groesse
   for i = 1:1:z_length*z_length
-    qnt_zerlegung(i,1) = p04_zigzag(cell2mat(dct_zerlegung(i,1)));
+    zig_zerlegung(i,1) = p04_zigzag(cell2mat(dct_zerlegung(i,1)));
   end
   
   %e) RLE und f)
-    img_compressed = zig_zerlegung; %Initialisierung für die richtige Groesse
+  img_compressed = zig_zerlegung; %Initialisierung für die richtige Groesse
   for i = 1:1:z_length*z_length
     img_compressed(i,1) = p04_rle(cell2mat(qnt_zerlegung(i,1)));
   end
