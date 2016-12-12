@@ -5,15 +5,15 @@ function img_compressed = p04_compress(image, block_size, quant)
   if (mod(M, block_size) ~= 0) | (mod(N, block_size) ~= 0)
     error('Bild nicht einteilbar in gegebene Blockgröße!');
   else  
-    verticalBlocks = M/block_size;
-    horizontalBlocks = N/block_size;
+    verticalBlocks = M/block_size; % Anzahl der horziontalen Bloecke
+    horizontalBlocks = N/block_size;  % Anzahl der vertikalen Bloecke
     y_sizes = block_size.*ones(1, verticalBlocks);
     x_sizes = block_size.*ones(1, horizontalBlocks);
     zerlegung = mat2cell(image, y_sizes, x_sizes);
   end  
   
   z_length = length(zerlegung);
-  zerlegung_vec = reshape(zerlegung, [z_length*z_length, 1]);
+  zerlegung_vec = reshape(zerlegung, [z_length*z_length, 1]); %Alle Bloecke als Vektor schreiben
   
   %b) DCT auf den Bloecken
   dct_zerlegung = zerlegung_vec; %Initialisierung für die richtige Groesse
