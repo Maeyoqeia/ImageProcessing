@@ -12,7 +12,7 @@ b = [-1 0 1];
 sobelkernelx = a*b;
 sobelkernely = b'*a';
 img1 = p05_conv2d(image, sobelkernelx);
-#img2 = p05_filt2d(image, sobelkernelx);
+img2 = p05_filt2d(image, sobelkernelx);
 
 figure(2); imshow(img1);
-#figure(3); imshow(img2);
+figure(3); imshow(img2);
