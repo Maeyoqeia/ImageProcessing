@@ -1,4 +1,4 @@
-pkg load image;
+%pkg load image;
 
 close all; clear; clc;
 %read picture and convert to double

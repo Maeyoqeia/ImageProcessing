@@ -1,10 +1,11 @@
 function img_conv = p05_conv2d(image,kernel)
 
 [m,n] = size(image);
-padding = floor((size(kernel/2)(1))/2);
+[kernelsize,~] = size(kernel);
+padding = floor(kernelsize/2);
 image_pddd = padarray(image, [padding padding]);
 kernel_flpd = flipud(fliplr(kernel));
-[kernelsize,~] = size(kernel);
+
 img_filt = ones(m,n);
 
 for x = 1+padding:m+padding
